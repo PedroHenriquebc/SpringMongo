@@ -10,20 +10,21 @@ import com.pedrohbc.springmongo.repositories.FuncionarioRepository;
 
 
 @SpringBootApplication
-public class SpringmongoApplication implements CommandLineRunner{
+public class SpringmongoApplication { //implements CommandLineRunner
 	
-	@Autowired
-	private FuncionarioRepository funcionarioRepository;
+//	@Autowired
+//	private FuncionarioRepository funcionarioRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringmongoApplication.class, args);
 	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		Funcionario f1 = new Funcionario("joao", "joao@gmail.com");
-		funcionarioRepository.save(f1);
-		
-	}
-
 }
+
+//	@Override
+//	public void run(String... args) throws Exception {
+//		Funcionario f1 = new Funcionario("joao", "joao@gmail.com");
+//		funcionarioRepository.save(f1);
+//		
+//	}
+//
+//}

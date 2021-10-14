@@ -29,4 +29,6 @@ public class funcionarioController {
 		return funcionarioRepository.save(funcionario);
 	}
 	
+//	@PutMapping
+//	public Funcionario put(@Re)
 }

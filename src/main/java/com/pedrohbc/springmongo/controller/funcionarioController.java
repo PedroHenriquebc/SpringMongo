@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pedrohbc.springmongo.model.Funcionario;
-import com.pedrohbc.springmongo.repositories.FuncionarioRepository;
 import com.pedrohbc.springmongo.services.FuncionarioService;
 
 @RestController
@@ -38,6 +38,17 @@ public class funcionarioController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		} else {
 			return ResponseEntity.status(HttpStatus.OK).body(funcionario);
+		}
+	}
+	
+	@GetMapping(value = "/email")
+	public ResponseEntity<List<Funcionario>> findByEmail(@RequestParam ("email") String email) {
+		List<Funcionario> list = funcionarioService.findByEmail(email);
+//		return ResponseEntity.status(HttpStatus.OK).body(list);
+		if (list == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).body(list);
 		}
 	}
 

@@ -20,6 +20,10 @@ public class FuncionarioService {
 	public Funcionario findById(String id) {
 		return this.funcionarioRepository.findById(id).orElse(null);
 	}
+	
+	public List<Funcionario >findByEmail(String email) {
+		return this.funcionarioRepository.findByEmail(email);
+	}
 
 	public Funcionario create(Funcionario funcionario) {
 		return this.funcionarioRepository.save(funcionario);

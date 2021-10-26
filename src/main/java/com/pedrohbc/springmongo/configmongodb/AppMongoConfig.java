@@ -1,4 +1,4 @@
-package com.pedrohbc.springmongo;
+package com.pedrohbc.springmongo.configmongodb;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;

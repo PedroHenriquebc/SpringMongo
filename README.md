@@ -1,0 +1,1 @@
+## Projeto teste para familiarização do Spring Boot com MongoDB ☕🍃

@@ -11,29 +11,37 @@ import com.pedrohbc.springmongo.repositories.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-	
+
 	@Autowired
 	UsuarioRepository usuarioRepository;
-	
+
 	public Usuario findById(String id) {
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
 		return usuario.orElse(null);
 	}
-	
-	public List<Usuario> findAll(){
+
+	public List<Usuario> findAll() {
 		return usuarioRepository.findAll();
 	}
-	
-//	public Usuario findByCpf(String cpf) {
-//		Optional<Usuario> usuario = usuarioRepository.findByCpf(cpf);
-//		return usuario.orElse(null);
+
+	public List<Usuario> findByCpf(String cpf) {
+		List<Usuario> list = usuarioRepository.findByCpf(cpf);
+		return list;
+	}
+
+//	public Usuario create(Usuario usuario) {
+//		return usuarioRepository.save(usuario);
 //	}
-//	
+	
 	public Usuario create(Usuario usuario) {
-		return usuarioRepository.save(usuario);
+		if(findByCpf(usuario.getCpf()).isEmpty()) {
+			return usuarioRepository.save(usuario);
+		} else {
+			return null;
+		}
 		
 	}
-	
+
 	public Usuario update(String id, Usuario usuario) {
 		Usuario newUsuario = findById(id);
 		newUsuario.setNome(usuario.getNome());
@@ -41,10 +49,10 @@ public class UsuarioService {
 		newUsuario.setCpf(usuario.getCpf());
 		return usuarioRepository.save(newUsuario);
 	}
-	
+
 	public void delete(String id) {
 		findById(id);
 		usuarioRepository.deleteById(id);
 	}
-	
+
 }
